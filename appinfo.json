@@ -1,0 +1,40 @@
+{
+  "uuid": "79ce7212-0023-4926-8609-58affab983b2",
+  "shortName": "New Relic",
+  "longName": "New Relic Watchface",
+  "companyName": "ChrisRegado",
+  "versionCode": 1,
+  "versionLabel": "1.0.0",
+  "watchapp": {
+    "watchface": true
+  },
+  "capabilities": [ "configurable" ],
+  "appKeys": {
+    "UPDATE_REQ_KEY": 0,
+    "APP_NAME_KEY": 1,
+    "APP_RESPONSE_TIME_KEY": 2,
+    "APP_THROUGHPUT_KEY": 3,
+    "APP_ERROR_RATE_KEY": 4,
+    "UPDATE_FREQ_KEY": 5
+  },
+  "resources": {
+    "media": [
+      {
+        "type": "png",
+        "name": "IMAGE_NEWRELIC_MENU_ICON",
+        "file": "images/newrelic_menu_icon.png",
+        "menuIcon": true
+      },
+      {
+        "type": "font",
+        "name": "FONT_FUTURA_CONDENSED_BOLD_53",
+        "file": "fonts/futura_condensed_bold-webfont.ttf"
+      },
+      {
+        "type": "font",
+        "name": "FONT_FUTURA_16",
+        "file": "fonts/futura.ttf"
+      }
+    ]
+  }
+}
