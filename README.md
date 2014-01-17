@@ -5,8 +5,8 @@ New Relic Watchface for Pebble
 
 The New Relic Watchface is an app for the [Pebble smartwatch](http://getpebble.com) 
 that puts key performance metrics from your New Relic-monitored app on your 
-wrist. It will automatically refresh at a regular interval to keep the data 
-fresh. Oh, and it tells you what time it is.
+wrist. It will automatically refresh at a regular interval to keep the info 
+up to date. Oh, and it tells you what time it is.
 
 This watchface requires at least Pebble app 2.0 on your phone and Pebble OS 2.0
 on your watch.
@@ -36,13 +36,13 @@ on your phone and open it in the Pebble app to install it.
 2. In the Pebble app settings on your phone, enter the New Relic configuration
 window.
 
-  <img src="http://chrisregado.github.io/newrelic-watch/screenshots/config_blank.png" alt="Empty config page" width="320" height="496"/>
+  <img src="http://chrisregado.github.io/newrelic-watch/screenshots/config_blank.png" alt="Empty config page" width="320" height="365"/>
 
 3. Enter your New Relic API key and select the app you'd like to monitor.
 You can also set how often you'd like your watch to get the latest data from
 New Relic.
 
-  <img src="http://chrisregado.github.io/newrelic-watch/screenshots/config_complete.png" alt="Complete config page" width="320" height="496"/>
+  <img src="http://chrisregado.github.io/newrelic-watch/screenshots/config_complete.png" alt="Complete config page" width="320" height="340"/>
 
 4. Save and enjoy!
 
