@@ -90,7 +90,11 @@ Options.prototype.save = function() {
 Options.getSavedOptions = function() {
   var serializedOptions = window.localStorage.getItem('options');
   var opts = JSON.parse(serializedOptions);
-  return new Options(opts.apiKey, opts.appId, opts.updateFreq);
+  if (opts) {
+    return new Options(opts.apiKey, opts.appId, opts.updateFreq);
+  } else {
+    return new Options(null, null, null);
+  }
 }
 
 /**
@@ -153,11 +157,12 @@ function transmitCurrentUpdateFreq() {
  * currently saved Options, and sends the data to the watch.
  */
 function fetchNewrelicData() {
-  console.log('Polling New Relic API for new data.');
   var options = Options.getSavedOptions();
   if (!options.apiKey || !options.appId) {
+    console.log('Trying to poll New Relic API, but config data missing!');
     return;
   }
+  console.log('Polling New Relic API for new data.');
   var req = new XMLHttpRequest();
   req.open('GET', NEWRELIC_API_URL + '/applications/' + options.appId + '.json', 
       true);
