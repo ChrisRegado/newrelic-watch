@@ -30,7 +30,7 @@ Integrations tab --> Data sharing --> API access.
 To set up the watch app:
 
 1. Download the 
-[New Relic Watchface PBW](https://github.com/chrisregado/newrelic-watch/releases/download/v1.0.0/newrelic-watch.pbw)
+[New Relic Watchface PBW](https://github.com/chrisregado/newrelic-watch/releases/download/v1.0.1/newrelic-watch.pbw)
 on your phone and open it in the Pebble app to install it.
 
 2. In the Pebble app settings on your phone, enter the New Relic configuration
