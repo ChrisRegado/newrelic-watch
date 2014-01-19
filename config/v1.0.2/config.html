@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <title>New Relic Watchface Configuration</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/foundation/5.0.2/css/foundation.min.css"/>
+  <script src="//cdn.jsdelivr.net/foundation/5.0.2/js/modernizr.js"></script>
+  <script src="js/config.js"></script>
+  <style>
+    /* Up/down spinner breaks postfix labels in many browsers. */
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Must include Foundation in body due to a bug:
+  https://github.com/zurb/foundation/commit/12ad42f8a5c6566df009096d6b6158b3df4e0b9d -->
+  <script src="//cdn.jsdelivr.net/foundation/5.0.2/js/foundation.min.js"></script>
+
+  <!-- Top Navbar -->
+
+  <nav class="top-bar" data-topbar>
+    <ul class="title-area">
+      <li class="name">
+      <h1><a href="">New Relic Watchface Configuration</a></h1>
+      </li>
+    </ul>
+  </nav>
+  <br/>
+
+  <!-- End Top Navbar -->
+
+  <!-- Configuration Form -->
+
+  <div class="row">
+    <div id="api-key-error-container" class="small-12 columns error">
+      <label for="api-key">1. Enter your New Relic API key:</label>
+      <input type="text" name="api-key" id="api-key"></input>
+      <small id="api-key-error" class="error"></small>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <label for="app-selector">2. Select an app to monitor:</label>
+      <select disabled name="app-selector" id="app-selector"></select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="row collapse">
+        <label for="update-freq">3. Update New Relic data every:</label>
+        <div class="small-7 columns">
+          <input type="number" pattern="[0-9]*" name="update-freq" id="update-freq" min="1" step="1"></input>
+        </div>
+        <div class="small-5 columns">
+          <span class="postfix">Minutes</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="columns">
+      <ul class="button-group">
+        <li><button id="cancel-button">Cancel</button></li>
+        <li><button id="save-button" disabled>Save</button></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- End Configuration Form -->
+
+</body>
+</html>
