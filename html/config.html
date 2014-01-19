@@ -8,6 +8,14 @@
   <link rel="stylesheet" href="//cdn.jsdelivr.net/foundation/5.0.2/css/foundation.min.css"/>
   <script src="//cdn.jsdelivr.net/foundation/5.0.2/js/modernizr.js"></script>
   <script src="js/config.js"></script>
+  <style>
+    /* Up/down spinner breaks postfix labels in many browsers. */
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  </style>
 </head>
 <body>
   <!-- Must include Foundation in body due to a bug:
@@ -49,7 +57,7 @@
       <div class="row collapse">
         <label for="update-freq">3. Update New Relic data every:</label>
         <div class="small-7 columns">
-          <input type="number" name="update-freq" id="update-freq" min="1"></input>
+          <input type="number" pattern="[0-9]*" name="update-freq" id="update-freq" min="1" step="1"></input>
         </div>
         <div class="small-5 columns">
           <span class="postfix">Minutes</span>

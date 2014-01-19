@@ -14,7 +14,7 @@
 /** Base URL for the New Relic API. */
 NEWRELIC_API_URL = 'https://api.newrelic.com/v2';
 /** URL for our configuration page. */
-CONFIG_PAGE_URL = 'http://chrisregado.github.io/newrelic-watch/config/v1.0.0/config.html';
+CONFIG_PAGE_URL = 'http://chrisregado.github.io/newrelic-watch/config/v1.0.2/config.html';
 /** Maximum amount of time (in ms) to wait for New Relic API responses. */
 AJAX_TIMEOUT = 30000;
 
@@ -91,9 +91,9 @@ Options.getSavedOptions = function() {
   var serializedOptions = window.localStorage.getItem('options');
   var opts = JSON.parse(serializedOptions);
   if (opts) {
-    return new Options(opts.apiKey, opts.appId, opts.updateFreq);
+    return Options.fromObject(opts);
   } else {
-    return new Options(null, null, null);
+    return new Options();
   }
 }
 
@@ -219,14 +219,21 @@ Pebble.addEventListener('ready',
  * Options object.
  */
 Pebble.addEventListener('webviewclosed', function(e) {
-  console.log('Configuration window closed.');
-  if (!e.response) {
+  console.log('Configuration window closed: ' + JSON.stringify(e));
+  if (!e.response || e.response == '{}') {
     console.log('No options returned from configuration.');
     return;
   }
-  console.log('User submitted (possibly new) configuration.');
-  var serializedOptions = JSON.parse(decodeURIComponent(e.response));
-  Options.fromObject(serializedOptions).save();
+  try { 
+    // Cancelling config with the Android back button returns 'CANCELLED' as 
+    // the response, which wasn't in the Pebble docs... Let's be safe.
+    console.log('User submitted (possibly new) configuration.');
+    var serializedOptions = JSON.parse(decodeURIComponent(e.response));
+    Options.fromObject(serializedOptions).save();
+  } catch (err) {
+    console.log('Error updating config. ' + err.message);
+    return;
+  }
   transmitCurrentUpdateFreq();
   fetchNewrelicData();
 });
