@@ -16,8 +16,8 @@
 #define NEWRELIC_VALUE_FIELD_SIZE 24
 
 /** Max length of the final New Relic text printed to the screen. */
-#define NEWRELIC_DISPLAY_FIELD_SIZE (NEWRELIC_VALUE_FIELD_SIZE * 3 + 10)
-// We have 3 data fields, and the +10 is for labels/spacing.
+#define NEWRELIC_DISPLAY_FIELD_SIZE (NEWRELIC_VALUE_FIELD_SIZE * 4 + 10)
+// We have 4 data fields, and the +10 is for labels/spacing.
 
 /**
  * These are the key mappings for KV pairs passed from JS by App Message.
@@ -26,14 +26,15 @@
 enum AppMessageKey {
   // Key:                     // Value:
   UPDATE_REQ_KEY = 0,         // int32 - non-0 is a request msg for new data
-  APP_NAME_KEY = 1,           // cstring - New Relic app name we're monitoring
-  APP_RESPONSE_TIME_KEY = 2,  // cstring - New Relic app response time
-                              //           a string since Pebble has no floats
-  APP_THROUGHPUT_KEY = 3,     // int32 - New Relic app RPM 
-                              //         (can't send uints from JS App Messages)
-  APP_ERROR_RATE_KEY = 4,     // int32 - New Relic app error rate (%)
-  UPDATE_FREQ_KEY = 5,        // int32 - Instruction to fetch new New Relic 
+  UPDATE_FREQ_KEY = 1,        // int32 - Instruction to fetch new New Relic 
                               //         data every this many minutes
+  APP_NAME_KEY = 2,           // cstring - New Relic app name we're monitoring
+  APP_RESPONSE_TIME_KEY = 3,  // cstring - New Relic app response time
+                              //           a string since Pebble has no floats
+  APP_THROUGHPUT_KEY = 4,     // int32 - New Relic app RPM 
+                              //         (can't send uints from JS App Messages)
+  APP_ERROR_RATE_KEY = 5,     // int32 - New Relic app error rate (%)
+  APP_APDEX_SCORE_KEY = 6,    // cstring - New Relic apdex score for our app
 };
 
 /**

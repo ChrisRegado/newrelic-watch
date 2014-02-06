@@ -175,15 +175,26 @@ function fetchNewrelicData() {
       var response = JSON.parse(req.responseText);
       var appSummary = response['application']['application_summary'];
       if (appSummary) {
+        var apdexScore = appSummary['apdex_score'] || 0;  // null apdex if 0rpm
         Pebble.sendAppMessage({ 
           'APP_NAME_KEY': response['application']['name'],
           'APP_RESPONSE_TIME_KEY': appSummary['response_time'].toString(),
           // ^ Pebble doesn't have floats.
           'APP_THROUGHPUT_KEY': appSummary['throughput'],
           'APP_ERROR_RATE_KEY': appSummary['error_rate'].toString(),
+          'APP_APDEX_SCORE_KEY': apdexScore.toFixed(2).toString(),
         });
-        console.log('Sent new New Relic data to watch.');
+      } else {
+        // The application is not reporting data.
+        Pebble.sendAppMessage({
+          'APP_NAME_KEY': response['application']['name'],
+          'APP_RESPONSE_TIME_KEY': '0',
+          'APP_THROUGHPUT_KEY': 0,
+          'APP_ERROR_RATE_KEY': '0',
+          'APP_APDEX_SCORE_KEY': '0.00',
+        });
       }
+      console.log('Sent new New Relic data to watch.');
     } else { 
       console.log('Error fetching New Relic data! Response code ' + 
           req.status + ', body: ' + req.responseText); 

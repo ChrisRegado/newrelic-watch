@@ -47,7 +47,7 @@ void clock_layer_init(Layer *parent_layer) {
   text_layer_set_text_color(weekday_text_layer, GColorWhite);
   text_layer_set_background_color(weekday_text_layer, GColorClear);
   text_layer_set_font(weekday_text_layer, 
-      fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_FUTURA_16)));
+      fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_SIGNIKA_REGULAR_16)));
   layer_add_child(parent_layer, text_layer_get_layer(weekday_text_layer));
 
   // Layer that displays the time:
@@ -71,7 +71,7 @@ void clock_layer_init(Layer *parent_layer) {
   text_layer_set_background_color(date_text_layer, GColorClear);
   text_layer_set_text_alignment(date_text_layer, GTextAlignmentRight);
   text_layer_set_font(date_text_layer, 
-      fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_FUTURA_16)));
+      fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_SIGNIKA_REGULAR_16)));
   layer_add_child(parent_layer, text_layer_get_layer(date_text_layer));
 }
 

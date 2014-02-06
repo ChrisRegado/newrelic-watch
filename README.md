@@ -69,6 +69,9 @@ Credits
 Clock modeled after dabdemon's 
 [*Yahoo! Weather* watchface](http://www.mypebblefaces.com/apps/9518/7807/).
 
+The primary font is [Signika](http://www.google.com/fonts/specimen/Signika) 
+(Normal 400). The clock font is Futura Condensed (Bold).
+
 Neither this app nor its creator are affiliated with or endorsed by New 
 Relic, Inc. The New Relic name and logo are the exclusive property of New 
 Relic, Inc. See [newrelic.com](http://newrelic.com).
