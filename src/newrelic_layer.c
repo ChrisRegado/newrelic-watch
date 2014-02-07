@@ -10,17 +10,23 @@ static Layer *line_layer;
 
 // Docs are in the header file.
 void request_newrelic_update(void) {
+  AppMessageResult send_status;
   APP_LOG(APP_LOG_LEVEL_DEBUG, "Requesting New Relic data update from phone.");
   Tuplet update_req = TupletInteger(UPDATE_REQ_KEY, 1);
   DictionaryIterator *iter;
-  app_message_outbox_begin(&iter);
+  send_status = app_message_outbox_begin(&iter);
   if (iter == NULL) {
-    APP_LOG(APP_LOG_LEVEL_ERROR, "Failed to request New Relic update from phone!");
+    APP_LOG(APP_LOG_LEVEL_ERROR, 
+        "Failed to create request for New Relic update! Error: %d", send_status);
     return;
   }
   dict_write_tuplet(iter, &update_req);
   dict_write_end(iter);
-  app_message_outbox_send();
+  send_status = app_message_outbox_send();
+  if (send_status != APP_MSG_OK) {
+    APP_LOG(APP_LOG_LEVEL_ERROR, 
+        "Failed to create request for New Relic update! Error: %d", send_status);
+  }
 }
 
 /**

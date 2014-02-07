@@ -222,6 +222,11 @@ Pebble.addEventListener('ready',
   function(e) {
     console.log('PebbleKit JS initialized.');
     transmitCurrentUpdateFreq();
+    fetchNewrelicData();
+    // PEBBLE BUG?: When an inbound app message triggers the initialization of
+    // the JS app on the phone, that message's "appmessage" event often fails
+    // to fire. We eagerly send New Relic data here to counter that, but it 
+    // sometimes results in doing duplicate data fetches at startup.
   }
 );
 
